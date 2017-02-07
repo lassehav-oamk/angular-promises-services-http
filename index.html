@@ -1,0 +1,83 @@
+<head>
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <style>
+    * {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    section
+    {
+        background-color: rgb(240,240,240);
+        margin-bottom: 40px;
+        padding: 10px;
+    }
+
+    .results
+    {
+        margin-top: 20px;
+    }
+  </style>
+</head>
+<body ng-app="myApp">
+<div ng-controller="MyAppCtrl">  
+    <h1>Angular promises demo</h1>
+    <p>
+        In Angular the $q is a service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing.
+    </p>
+    <section>
+        <h2>Demo with timer</h2>
+        <p>Here we are going to simulate an asynchronous operation with a timer. The timer will run for the duration which the asynchronous operation
+            (like a HTTP call, file read/write, database read/write etc.) would take.            
+        </p> 
+        <p>
+            The operation duration will be 500ms, after which a random string will be outputted.
+        </p>
+        <div>
+            <button ng-click="StartDemoA()">Get some random text!</button>            
+        </div>
+        <div class="results">
+            <h3>Results</h3>
+            <div style="background-color: black; color: rgb(0,255,0);">
+            {{ results.a }}
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2>Demo with HTTP call</h2>
+        <p>
+            This one will demonstrate the use of an asynchronous HTTP call to a web service to get some data and then display the results.
+        </p>
+        <p>
+            The HTTP call will be made to <a href="https://randomuser.me/api">https://randomuser.me/api</a> which generates random user data.
+        </p>
+        <div>
+            <button ng-click="StartDemoB()">Do the HTTP!</button>            
+        </div>
+        <div class="results">
+            <h3>Results</h3>
+            <table style="text-transform: capitalize;">
+                <tr>
+                    <td>Gender</td>
+                    <td>{{ results.b.gender }}</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>{{ results.b.name }}</td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td>{{ results.b.location }}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{ results.b.email }}</td>
+                </tr>
+            </table>            
+        </div>
+    </section>
+</div>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
